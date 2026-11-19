@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Shantell_Sans, Inter, Roboto_Slab } from "next/font/
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "./theme-provider";
+import { GuestAuthProvider } from "./Components/guest-auth-provider";
 
 const robotoSlabHeading = Roboto_Slab({subsets:['latin'],variable:'--font-heading'});
 
@@ -36,14 +37,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
-        <ThemeProvider
-          attribute={"class"}
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-          >
-            {children}
-        </ThemeProvider>
+        <GuestAuthProvider>
+          <ThemeProvider
+            attribute={"class"}
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+            >
+              {children}
+          </ThemeProvider>
+        </GuestAuthProvider>
       </body>
     </html>
   );
