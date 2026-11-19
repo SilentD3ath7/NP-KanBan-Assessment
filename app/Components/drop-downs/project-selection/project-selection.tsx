@@ -11,7 +11,6 @@ import { IconType } from "react-icons/lib";
 import { FaFlagCheckered } from "react-icons/fa6";
 import ProjectCommandItems from "./project-command-items";
 import { useState } from "react";
-import { useTheme } from "next-themes";
 
 export type Project = {
     id: string;
@@ -40,9 +39,6 @@ export const projects: Project[] = [
 
 export default function ProjectSelectionDropDown() {
 
-    const { theme } = useTheme();
-    const bgColor = theme === "dark" ? "bg-gray-600" : "bg-gray-100";
-
     // Selected project state
     const [selectedProject, setSelectedProject] = useState<Project>(projects[0])
 
@@ -51,7 +47,7 @@ export default function ProjectSelectionDropDown() {
     // JSX
     return (
         <Popover>
-            <PopoverTrigger render={<Button variant="ghost" className={`w-full flex justify-between py-9 rounded-xl ${bgColor}`}/>}>
+            <PopoverTrigger render={<Button variant="ghost" className={`w-full flex justify-between py-9 rounded-xl dark:bg-gray-600`}/>}>
 
                 {/* Show the name of the selected project state */}
                 <div className="flex items-start flex-col text-[16px] gap-1">

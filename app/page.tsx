@@ -1,6 +1,5 @@
 "use client";
 
-import { useTheme } from "next-themes";
 import { useState } from "react";
 import { ColumnsState } from "./Components/types";
 import Navbar from "./Components/nav-bar/nav-bar";
@@ -8,11 +7,6 @@ import ProjectsArea from "./Components/project-area";
 import RightSideBar from "./Components/right-side-bar/right-side-bar";
 
 export default function Home() {
-  const { theme } = useTheme();
-
-  const bgColor = theme === "dark" ? "bg-slate-900" : "bg-gray-200";
-
-  // Initial columns of the different boards
   const [columns, setColumns] = useState<ColumnsState>({
     toDo:
       {
@@ -50,7 +44,7 @@ export default function Home() {
   const completedTasks = columns.done.items.length;
 
   return (
-    <div className={`${bgColor} border min-h-screen w-full`}>
+    <div className={`dark:bg-slate-900 border min-h-screen w-full`}>
       <Navbar/>
       <div className="grid grid-cols-[3fr_1fr] px-6 mt-8 shantellSans gap-4">
         <ProjectsArea columns={columns} setColumns={setColumns}/>

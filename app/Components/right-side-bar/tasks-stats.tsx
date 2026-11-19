@@ -1,4 +1,3 @@
-import { useTheme } from "next-themes";
 import { Separator } from "@base-ui/react";
 import { RightSideBarProps } from "../types"
 
@@ -33,11 +32,8 @@ export default function TasksStats({notStarted, inProgressAndReview, completedTa
 }
 
 function SingleCard({ statCard }: {statCard: TaskCard}) {
-    const { theme } = useTheme();
-    const bgColor = theme === "dark" ? "bg-black" : "bg-gray-100";
-
     return (
-        <div className={`p-3 ${bgColor} rounded-xl`}>
+        <div className={`p-3 dark:bg-black rounded-xl`}>
 
             {/* Label of each stat card */}
             <span className="text-gray-600 text-[12px]">{statCard.label.toUpperCase()}</span>

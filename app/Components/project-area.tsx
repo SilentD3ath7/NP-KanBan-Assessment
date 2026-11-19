@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { MdOutlineSortByAlpha } from "react-icons/md";
 import { SortingDropDown } from "./drop-downs/sorting-drop-down";
-import { useTheme } from "next-themes";
 import { ColumnsState, ColumnKey, TaskItem } from "./types";
 
 type ProjectsAreaProps = {
@@ -22,8 +21,6 @@ export default function ProjectsArea({ columns, setColumns }: ProjectsAreaProps)
     const [activeColumns, setActiveColumns] = useState<ColumnKey>("toDo");
     const [draggedItem, setDraggedItem] = useState<DraggedItem | null>(null);
 
-    const { theme } = useTheme();
-    const bgColor = theme === "dark" ? "bg-black" : "bg-gray-100";
     const columnStyles = {
         toDo: {
             header: "bg-gradient-to-r from-blue-600 to-blue-400",
@@ -149,7 +146,7 @@ export default function ProjectsArea({ columns, setColumns }: ProjectsAreaProps)
                     
                     // Parent container for the columns
                     <div key={columnId}
-                    className={`w-full h-full border p-4 rounded-2xl ${bgColor} shadow-xl`}
+                    className={`w-full h-full border p-4 rounded-2xl dark:bg-black shadow-xl`}
                     onDragOver={(e) => handleDragover(e)}
                     onDrop={(e) => handleDrop(e, columnId)}>
                         
