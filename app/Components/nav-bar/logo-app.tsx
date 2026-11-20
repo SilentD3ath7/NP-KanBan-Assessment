@@ -3,10 +3,12 @@ import { FaProjectDiagram } from "react-icons/fa";
 export default function AppNameAndLogo() {
     return (
         <div className="flex items-center gap-2">
+            
             {/* Logo */}
             <div className="bg-primary size-10 text-lg text-white rounded-xl flex justify-center items-center">
                 <FaProjectDiagram/>
             </div>
+
             {/* Container for the name */}
             <div className="flex gap-1 items-center text-xl text-white">
                 <span className="text-xl font-bold"> Pro</span>

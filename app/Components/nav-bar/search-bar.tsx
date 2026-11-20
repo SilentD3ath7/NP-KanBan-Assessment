@@ -1,6 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { IoSearch } from "react-icons/io5";
 
+// WIP
 export default function SearchBar() {
     return (
         <div className="relative">

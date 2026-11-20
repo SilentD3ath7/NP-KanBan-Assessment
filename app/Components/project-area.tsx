@@ -97,7 +97,7 @@ export default function ProjectsArea({ columns, setColumns }: ProjectsAreaProps)
     };
 
     return (
-        //bg-[color-mix(in_oklab,ButtonFace_75%,transparent)]
+        // Task board parent container
         <Card className="shadow-none p-7 rounded-3xl px-7 flex flex-col gap-8 bg-[color-mix(in_oklab,ButtonFace_75%,transparent)]">
 
             {/* Header */}
@@ -134,7 +134,7 @@ export default function ProjectsArea({ columns, setColumns }: ProjectsAreaProps)
                     transition-all duration-200 cursor-pointer">Add</button>
                 </div>    
 
-                {/* Sort label and icon */} 
+                {/* Sort label and icon WIP*/} 
                 {/* <div className="flex items-center gap-1">
                     <MdOutlineSortByAlpha className="text-xl text-gray-500"/>
                     <span className="text-gray-500 text-sm">Sort</span>
@@ -149,7 +149,7 @@ export default function ProjectsArea({ columns, setColumns }: ProjectsAreaProps)
             <div className="flex gap-6 overflow-x-auto pb-6 w-full h-full">
                 {(Object.keys(columns) as ColumnKey[]).map((columnId) => (
                     
-                    // Parent container for the columns #795772 #634d7c #924c42
+                    // Parent container for the columns
                     <div key={columnId}
                     className={`w-full h-full p-4 rounded-2xl ${columnStyles[columnId].bg} shadow-xl`}
                     onDragOver={(e) => handleDragover(e)}
@@ -163,20 +163,26 @@ export default function ProjectsArea({ columns, setColumns }: ProjectsAreaProps)
 
                         {/* Tasks container */}
                         <CardContent className={`p-3 min-h-64`}>
+
+                            {/* If task empty */}
                         {columns[columnId].items.length === 0 ? (
                             <div className="text-center py-35 text-gray-900 text-sm">Drop tasks here</div>
-                        ) : (
+                        ) : ( // If task has content
                             columns[columnId].items.map((item) => (
+
+                                // Individual task
                                 <div key={item.id} className={`p-4 mb-3 ${columnStyles[columnId].textBg} text-white rounded-lg
                                 shadow-md cursor-move flex items-center justify-between transform
                                 transition-all duration-200 hover:scale-105 hover:shadow-lg`}
                                 draggable
                                 onDragStart={() => handleDragStart(columnId, item)}>
                                     <span>{item.content}</span>
+
+                                    {/* Delete button */}
                                     <Button onClick={() => removeTask(columnId, item.id)}
-                                        className="text-zinc-400 hover:text-red-400 transition-colors duration-200 w-6
-                                        h-6 flex items-center justify-center rounded-full hover:bg-white bg-transparent">
-                                            <span className="text-lg cursor-pointer">x</span>
+                                    className="text-zinc-400 hover:text-red-400 transition-colors duration-200 w-6
+                                    h-6 flex items-center justify-center rounded-full hover:bg-white bg-transparent">
+                                        <span className="text-lg cursor-pointer">x</span>
                                     </Button>
                                 </div>
                             ))

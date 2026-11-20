@@ -20,6 +20,7 @@ export type Project = {
     tasks: string[];
 };
 
+// Currently static and WIP
 export const projects: Project[] = [
     {
         id: "1",
