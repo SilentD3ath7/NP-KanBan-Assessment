@@ -33,10 +33,10 @@ export default function TasksStats({notStarted, inProgressAndReview, completedTa
 
 function SingleCard({ statCard }: {statCard: TaskCard}) {
     return (
-        <div className={`p-3 dark:bg-black rounded-xl`}>
+        <div className={`p-3 dark:bg-gray-700 bg-gray-200 rounded-xl`}>
 
             {/* Label of each stat card */}
-            <span className="text-gray-600 text-[12px]">{statCard.label.toUpperCase()}</span>
+            <span className="dark:text-white text-black text-[12px]">{statCard.label.toUpperCase()}</span>
 
             {/* Vertical line and the number value */}
             <div className="flex gap-2 mt-1 items-center">

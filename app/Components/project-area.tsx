@@ -23,20 +23,24 @@ export default function ProjectsArea({ columns, setColumns }: ProjectsAreaProps)
 
     const columnStyles = {
         toDo: {
-            header: "bg-gradient-to-r from-blue-600 to-blue-400",
-            border: "border-blue-400"
+            header: "bg-gradient-to-r from-[#3e2c3a] to-[#ab8ba5]",
+            bg: "bg-[#795772]",
+            textBg: "bg-[#2f222c]"
         },
         inProgress: {
-            header: "bg-gradient-to-r from-yellow-600 to-yellow-400",
-            border: "border-yellow-400"
+            header: "bg-gradient-to-r from-[#5b3941] to-[#c29ea7]",
+            bg: "bg-[#99616e]",
+            textBg: "bg-[#3b262b]"
         },
         inReview: {
-            header: "bg-gradient-to-r from-orange-600 to-orange-400",
-            border: "border-orange-400"
+            header: "bg-gradient-to-r from-[#31263d] to-[#967fb0]",
+            bg: "bg-[#634d7c]",
+            textBg: "bg-[#241c2d]"
         },
         done: {
-            header: "bg-gradient-to-r from-green-600 to-green-400",
-            border: "border-green-400"
+            header: "bg-gradient-to-r from-[#7f4033] to-[#daada4]",
+            bg: "bg-[#bd6c5b]",
+            textBg: "bg-[#5b2e24]"
         },
     }
 
@@ -93,7 +97,8 @@ export default function ProjectsArea({ columns, setColumns }: ProjectsAreaProps)
     };
 
     return (
-        <Card className="shadow-none p-7 rounded-3xl px-7 flex flex-col gap-8">
+        //bg-[color-mix(in_oklab,ButtonFace_75%,transparent)]
+        <Card className="shadow-none p-7 rounded-3xl px-7 flex flex-col gap-8 bg-[color-mix(in_oklab,ButtonFace_75%,transparent)]">
 
             {/* Header */}
             <div className="relative flex justify-between items-center w-full">
@@ -103,19 +108,19 @@ export default function ProjectsArea({ columns, setColumns }: ProjectsAreaProps)
                 </div>
 
                 {/* Input to add a task */}
-                <div className="absolute left-1/2 -translate-x-1/2 mb-8 flex w-full max-w-lg shadow-lg rounded-lg overflow-hidden">
+                <div className="absolute left-1/2 -translate-x-1/2 flex w-full max-w-lg shadow-lg rounded-lg overflow-hidden">
                     
                     {/* Typebar */}
                     <input type="text" value={newTask}
                     onChange={(e) => setNewTask(e.target.value)}
                     placeholder="Add a New Task..."
-                    className="flex-grow p-3 bg-primary text-white"
+                    className="flex-grow p-3 bg-primary text-white placeholder-white!"
                     onKeyDown={(e) => e.key === "Enter" && addNewTask()}/>
 
                     {/* Where should the task be created */}
                     <select value={activeColumns}
                     onChange={(e) => setActiveColumns(e.target.value as ColumnKey)}
-                    className={`p-3 ${columnStyles[activeColumns].header} bg-zinc-700 text-white border border-black`}>
+                    className={`p-3 ${columnStyles[activeColumns].header} bg-zinc-700 text-white mx-2 rounded`}>
                         {(Object.keys(columns) as ColumnKey[]).map((columnId) => (
                             <option value={columnId} key={columnId}>
                                 {columns[columnId].name}
@@ -144,27 +149,27 @@ export default function ProjectsArea({ columns, setColumns }: ProjectsAreaProps)
             <div className="flex gap-6 overflow-x-auto pb-6 w-full h-full">
                 {(Object.keys(columns) as ColumnKey[]).map((columnId) => (
                     
-                    // Parent container for the columns
+                    // Parent container for the columns #795772 #634d7c #924c42
                     <div key={columnId}
-                    className={`w-full h-full border p-4 rounded-2xl dark:bg-black shadow-xl`}
+                    className={`w-full h-full p-4 rounded-2xl ${columnStyles[columnId].bg} shadow-xl`}
                     onDragOver={(e) => handleDragover(e)}
                     onDrop={(e) => handleDrop(e, columnId)}>
                         
                         {/* Task Header */}
                         <CardHeader className={`flex justify-between ${columnStyles[columnId].header} p-4 rounded-lg items-center`}>
-                            <span className="font-medium text-md">{columns[columnId].name}</span>
+                            <span className="font-medium text-md text-white">{columns[columnId].name}</span>
                             <span className="size-6 rounded-full bg-primary text-white flex items-center justify-center">{columns[columnId].items.length}</span>
                         </CardHeader>
 
                         {/* Tasks container */}
-                        <CardContent className="p-3 min-h-64">
+                        <CardContent className={`p-3 min-h-64`}>
                         {columns[columnId].items.length === 0 ? (
-                            <div className="text-center py-35 text-zinc-500 text-sm">Drop tasks here</div>
+                            <div className="text-center py-35 text-gray-900 text-sm">Drop tasks here</div>
                         ) : (
                             columns[columnId].items.map((item) => (
-                                <div key={item.id} className="p-4 mb-3 bg-zinc-700 text-white rounded-lg
+                                <div key={item.id} className={`p-4 mb-3 ${columnStyles[columnId].textBg} text-white rounded-lg
                                 shadow-md cursor-move flex items-center justify-between transform
-                                transition-all duration-200 hover:scale-105 hover:shadow-lg"
+                                transition-all duration-200 hover:scale-105 hover:shadow-lg`}
                                 draggable
                                 onDragStart={() => handleDragStart(columnId, item)}>
                                     <span>{item.content}</span>

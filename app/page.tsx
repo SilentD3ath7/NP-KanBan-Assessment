@@ -44,7 +44,7 @@ export default function Home() {
   const completedTasks = columns.done.items.length;
 
   return (
-    <div className={`dark:bg-slate-900 border min-h-screen w-full`}>
+    <div className={`bg-[length:100%_100%] min-h-screen w-full`} style={{ backgroundImage: "url('/hero.jpg')" }}>
       <Navbar/>
       <div className="grid grid-cols-[3fr_1fr] px-6 mt-8 shantellSans gap-4">
         <ProjectsArea columns={columns} setColumns={setColumns}/>

@@ -8,7 +8,7 @@ export default function AppNameAndLogo() {
                 <FaProjectDiagram/>
             </div>
             {/* Container for the name */}
-            <div className="flex gap-1 items-center text-xl">
+            <div className="flex gap-1 items-center text-xl text-white">
                 <span className="text-xl font-bold"> Pro</span>
                 <span className="text-xl">KanBan</span>
             </div>

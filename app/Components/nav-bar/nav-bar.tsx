@@ -16,7 +16,7 @@ export default function Navbar() {
             <div className="flex items-center gap-5">
                 {/* Toggle for dark or light mode */}
                 <ModeToggle/>
-                <Separator orientation="vertical" className="h-5 !w-[2px] my-auto bg-gray-500"/>
+                <Separator orientation="vertical" className="h-5 !w-[2px] my-auto bg-black"/>
 
                 {/* Create project button WIP*/}
                 <Button className="rounded-3xl h-10 shadow-none">

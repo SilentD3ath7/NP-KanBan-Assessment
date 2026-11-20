@@ -5,7 +5,7 @@ import "react-circular-progressbar/dist/styles.css";
 export default function CircularProgress({completedTasks, totalTasks,} : RightSideBarProps) {
 
     const percentage = totalTasks === 0 ? 0 : Math.round((completedTasks / totalTasks) * 100);
-    const primaryColor = "#14d123";
+    const primaryColor = "#22c55e";
 
     return (
         <CircularProgressbar

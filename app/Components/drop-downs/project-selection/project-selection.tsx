@@ -47,7 +47,7 @@ export default function ProjectSelectionDropDown() {
     // JSX
     return (
         <Popover>
-            <PopoverTrigger render={<Button variant="ghost" className={`w-full flex justify-between py-9 rounded-xl dark:bg-gray-600`}/>}>
+            <PopoverTrigger render={<Button variant="ghost" className={`w-full flex justify-between py-9 rounded-xl dark:bg-gray-700 bg-gray-200`}/>}>
 
                 {/* Show the name of the selected project state */}
                 <div className="flex items-start flex-col text-[16px] gap-1">
